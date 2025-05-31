@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147850415247",
+    "project_id": "gert-fa76a",
+    "storage_bucket": "gert-fa76a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147850415247:android:50491389d8311b22e6b4fa",
+        "android_client_info": {
+          "package_name": "com.example.gert_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ8ymZHA3Ik52Jt-c-u-n75zc_zy9coUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

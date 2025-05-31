@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'tela_mapa.dart';
 
 class ListaGrupoScreen extends StatefulWidget {
   final String nomeGrupo;
@@ -188,8 +189,18 @@ class ListaGrupoScreenState extends State<ListaGrupoScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                // Navegar para a tela do mapa (passar o ID do mapa)
-                              },
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapaDetalhesScreen(
+                                  mapaNome: mapa['nome'], // Passa o nome do mapa
+                                  mapaId: mapa['id'],     // Passa o ID do mapa para buscar detalhes completos na próxima tela
+                                  // Você pode passar outros dados diretamente se já os tiver aqui
+                                  // exemplo: dataInicio: mapa['dataInicio'],
+                                ),
+                              ),
+                            );
+                          },
                               child: const Text('VER MAPA'),
                             ),
                           ],
