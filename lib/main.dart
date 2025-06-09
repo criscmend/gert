@@ -58,7 +58,7 @@ class TelaInicial extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Olá!',
-                  style: GoogleFonts.pacifico(fontSize: 80.0, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.pacifico(fontSize: 70.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16.0),
                 const Text(
