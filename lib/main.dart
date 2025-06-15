@@ -6,13 +6,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; 
 
 void main() async {
-  // Garante que o Flutter e o Firebase sejam inicializados antes de rodar o app.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
-  // Trava a orientação do app para retrato.
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -30,10 +28,10 @@ class MyApp extends StatelessWidget {
       title: 'GerT',
       theme: ThemeData(
         primarySwatch: Colors.grey, 
-        canvasColor: const Color(0xFFD7D7D7), // Cor de fundo padrão das telas.
+        canvasColor: const Color(0xFFD7D7D7),
       ),
       home: const TelaInicial(),
-      debugShowCheckedModeBanner: false, // Remove a faixa de "Debug"
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -46,7 +44,6 @@ class TelaInicial extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Imagem de fundo (certifique-se que 'assets/background.png' existe no seu pubspec.yaml)
           Image.asset(
             'assets/background.png',
             fit: BoxFit.cover,
@@ -54,8 +51,6 @@ class TelaInicial extends StatelessWidget {
             height: double.infinity,
           ),
           Center(
-            // ALTERAÇÃO: Adicionado SingleChildScrollView para garantir que a tela seja rolável
-            // caso mais botões sejam adicionados no futuro, evitando erros de layout.
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
@@ -63,52 +58,50 @@ class TelaInicial extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Olá!',
-                    style: GoogleFonts.pacifico(fontSize: 70.0, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.pacifico(fontSize: 90.0, fontWeight: FontWeight.normal, color: Colors.black87),
                   ),
-                  const SizedBox(height: 16.0),
                   const Text(
-                    'ESCOLHA O SEU GRUPO',
-                    style: TextStyle(fontSize: 16.0, color: Colors.black87),
+                    'ESCOLHA O SEU GRUPO:',
+                    style: TextStyle(fontSize: 16.0, color: Colors.black26),
                   ),
-                  const SizedBox(height: 32.0),
+                  const SizedBox(height:10.0),
                   
-                  // Botão do GRUPO 1
                   _buildGroupButton(
                     context,
                     nomeGrupo: 'GRUPO 1',
-                    dirigente: 'Fulano da Silva',
-                    ajudante: 'Ciclano da Costa',
+                    descricao: 'São Mateus',
+                    dirigente: 'Mário Barbosa',
+                    ajudante: 'Samuel Pinheiro',
                     corTema: const Color(0xFF0C4758),
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 5.0),
                   
-                  // ALTERAÇÃO: Adicionados os botões para os outros grupos.
-                  // Botão do GRUPO 2
                   _buildGroupButton(
                     context,
                     nomeGrupo: 'GRUPO 2',
-                    dirigente: 'Beltrano Oliveira',
-                    ajudante: 'Novo Ajudante',
+                    descricao: 'Saudade',
+                    dirigente: 'Antônio Neto',
+                    ajudante: 'César Filho',
                     corTema: const Color(0xFF842900),
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 5.0),
 
-                  // Botão do GRUPO 3
                   _buildGroupButton(
                     context,
                     nomeGrupo: 'GRUPO 3',
-                    dirigente: 'Dirigente 3',
-                    ajudante: 'Ajudante 3',
+                    descricao: 'Vicente Silveira',
+                    dirigente: 'Elsilon dos Santos',
+                    ajudante: 'Otacílio Barbosa',
                     corTema: const Color(0xFF334D2E),
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 5.0),
 
-                  // Botão do GRUPO 4
                   _buildGroupButton(
                     context,
                     nomeGrupo: 'GRUPO 4',
-                    dirigente: 'Dirigente 4',
-                    ajudante: 'Ajudante 4',
+                    descricao: 'Lineu Jucá',
+                    dirigente: 'Elairton Souza',
+                    ajudante: 'Renato Soares',
                     corTema: const Color(0xFF332456),
                   ),
                 ],
@@ -120,11 +113,10 @@ class TelaInicial extends StatelessWidget {
     );
   }
 
-  // WIDGET NOVO: Criei este método para evitar a repetição de código dos botões.
-  // Ele cria um botão de grupo padronizado.
   Widget _buildGroupButton(
     BuildContext context, {
     required String nomeGrupo,
+    required String descricao,
     required String dirigente,
     required String ajudante,
     required Color corTema,
@@ -146,12 +138,22 @@ class TelaInicial extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: corTema,
         foregroundColor: Colors.white,
-        minimumSize: const Size(240, 120),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        minimumSize: const Size(240, 100),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       ),
-      child: Text(
-        nomeGrupo,
-        style: GoogleFonts.rajdhani(fontSize: 24.0, fontWeight: FontWeight.bold),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            nomeGrupo,
+            style: GoogleFonts.ptSansCaption(fontSize: 24.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            descricao,
+            style: GoogleFonts.lato(fontSize: 14.0, color: Colors.white.withOpacity(0.8)),
+          ),
+        ],
       ),
     );
   }

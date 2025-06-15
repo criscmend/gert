@@ -26,13 +26,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
-
-  #  Adicione esta seção para incluir os assets
   assets:
-    - assets/background.png #  Certifique-se de que o caminho está correto
-  #  Se você tiver imagens em uma pasta dentro de assets, use assim:
-  #  assets:
-  #    - assets/images/
+    - assets/background.png
+    - assets/logo.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.png" 
